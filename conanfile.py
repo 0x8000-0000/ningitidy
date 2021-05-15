@@ -20,9 +20,8 @@ class NinGiTidy(ConanFile):
         self.requires("nlohmann_json/3.9.1")
         self.requires("frozen/1.0.1")
         self.requires("abseil/20210324.1")
-        # enable when they build on Debian
-        #self.requires("protobuf/3.15.5")
-        #self.requires("grpc/1.37.1")
+        self.requires("protobuf/3.15.5")
+        self.requires("grpc/1.37.1")
 
     def configure(self):
         tools.check_min_cppstd(self, "20")
