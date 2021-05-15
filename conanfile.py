@@ -22,6 +22,7 @@ class NinGiTidy(ConanFile):
         self.requires("abseil/20210324.1")
         self.requires("protobuf/3.15.5")
         self.requires("grpc/1.37.1")
+        self.requires("gtest/cci.20210126")
 
     def configure(self):
         tools.check_min_cppstd(self, "20")
