@@ -1,0 +1,45 @@
+syntax = 'proto3';
+
+package sbit;
+
+message Element {
+   string application         = 1;
+   string translationUnit     = 2;
+   repeated string dependency = 3;
+}
+
+message ElementCheckRequest {
+   string requestId = 1;
+   Element element = 2;
+}
+
+message CheckRequest {
+   repeated ElementCheckRequest checkRequest = 1;
+}
+
+message ElementCheckStatus {
+   string requestId = 1;
+   bool isValid     = 2;
+}
+
+message CheckResponse {
+   repeated ElementCheckStatus elementStatus = 1;
+}
+
+message ElementStatus {
+   Element element = 1;
+   bool isValid    = 2;
+}
+
+message AddRequest {
+   repeated ElementStatus elementStatus = 1;
+}
+
+message AddResponse {
+   int32 addedCount = 1;
+}
+
+service Cache {
+   rpc GetStatus(CheckRequest) returns (CheckResponse) {}
+   rpc AddStatus(AddRequest) returns (AddResponse) {}
+}

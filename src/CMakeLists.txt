@@ -1,3 +1,10 @@
 add_executable(check check.cpp)
 target_link_libraries(check PUBLIC project_options project_warnings)
-target_link_libraries(check PUBLIC CONAN_PKG::fmt CONAN_PKG::abseil)
+target_link_libraries(check PUBLIC fmt::fmt absl::random_random)
+
+add_executable(test_protocol test_protocol.cpp cache.proto)
+target_include_directories(test_protocol PRIVATE "${CMAKE_CURRENT_BINARY_DIR}")
+target_link_libraries(test_protocol fmt::fmt protobuf::libprotobuf protobuf::libprotoc)
+
+protobuf_generate_cpp(PROTO_SRCS PROTO_HDRS TARGET test_protocol)
+protobuf_generate(LANGUAGE cpp TARGET test_protocol PROTOS cache.proto)

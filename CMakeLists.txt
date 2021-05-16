@@ -13,6 +13,10 @@ conan_basic_setup(TARGETS NO_OUTPUT_DIRS)
 
 find_package(Threads)
 
+find_package(fmt CONFIG REQUIRED)
+find_package(absl CONFIG REQUIRED)
+find_package(protobuf CONFIG REQUIRED)
+
 add_library(project_options INTERFACE)
 
 add_library(project_warnings INTERFACE)
