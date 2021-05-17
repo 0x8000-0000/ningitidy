@@ -15,6 +15,7 @@ find_package(Threads)
 
 find_package(fmt CONFIG REQUIRED)
 find_package(absl CONFIG REQUIRED)
+find_package(re2 CONFIG REQUIRED)
 find_package(protobuf CONFIG REQUIRED)
 
 add_library(project_options INTERFACE)

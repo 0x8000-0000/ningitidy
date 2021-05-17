@@ -8,3 +8,9 @@ target_link_libraries(test_protocol fmt::fmt protobuf::libprotobuf protobuf::lib
 
 protobuf_generate_cpp(PROTO_SRCS PROTO_HDRS TARGET test_protocol)
 protobuf_generate(LANGUAGE cpp TARGET test_protocol PROTOS cache.proto)
+
+
+add_executable(summarize_inputs summarize_inputs.cpp)
+target_link_libraries(summarize_inputs PRIVATE project_options project_warnings)
+target_link_libraries(summarize_inputs PRIVATE fmt::fmt re2::re2
+   absl::flat_hash_set)
