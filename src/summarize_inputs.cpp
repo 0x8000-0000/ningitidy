@@ -64,7 +64,7 @@ absl::flat_hash_map<std::string, TranslationUnit> getArtifacts(std::istream& is,
          {
             // end of translation unit
 
-            if (filter && RE2::FullMatch(buffer.data(), *filter))
+            if ((filter != nullptr) && RE2::FullMatch(buffer.data(), *filter))
             {
                // skip
             }
@@ -102,7 +102,7 @@ absl::flat_hash_map<std::string, TranslationUnit> getArtifacts(std::istream& is,
             throw std::logic_error{"Inconsistent state; expecting dependency unit but found no indent."};
          }
 
-         if (filter && RE2::FullMatch(buffer.data(), *filter))
+         if ((filter != nullptr) && RE2::FullMatch(buffer.data(), *filter))
          {
             // skip
          }
